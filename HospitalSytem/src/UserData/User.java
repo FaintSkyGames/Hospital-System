@@ -26,7 +26,7 @@ abstract public class User {
     }
     
     public User(String userType, String firstName, String surname, String address, String password){
-        this.ID = generateID(userType);
+        this.ID = userType; // gen ids later
         this.firstName = firstName;
         this.surname = surname;
         this.address = address;

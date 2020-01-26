@@ -27,10 +27,11 @@ public  class ReadJSON {
         
         try
         {
-            System.err.println(file.toPath().toAbsolutePath().toString());
-            JSONObject obj = (JSONObject) parser.parse(new FileReader(file));
+            //System.err.println(file.toPath().toAbsolutePath().toString());
+            JSONArray obj = (JSONArray) parser.parse(new FileReader(file));
             
-            fileData = (JSONArray) obj.get(null);
+            fileData = obj;
+            //fileData = (JSONArray) obj.get();
             //* find & get file
             //* put into array
             

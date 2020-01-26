@@ -78,17 +78,18 @@ public class Database {
     }
     
     private static ArrayList CreateAdmin(JSONArray adminData){
-        ArrayList<Administrator> adminList = null;
+        ArrayList<Administrator> adminList = new ArrayList<>();
         
         for (int i = 0; i < adminData.size(); i++) {
             JSONObject current = (JSONObject) adminData.get(i);
             UserData.Administrator tempAdmin = null;
+           
             
-            tempAdmin = new Administrator(current.get("ID").toString(),
-                    current.get("firstName").toString(),
-                    current.get("surname").toString(),
-                    current.get("address").toString(),
-                    current.get("password").toString());
+            tempAdmin = new Administrator((String) current.get("ID"),
+                    (String) current.get("givenName"),
+                    (String) current.get("surname"),
+                    (String) current.get("address"),
+                    (String) current.get("password"));
             
             adminList.add(tempAdmin);
         }
@@ -97,14 +98,14 @@ public class Database {
     }
     
     private static ArrayList CreateSecretary(JSONArray secData){
-        ArrayList<Secretary> secList = null;
+        ArrayList<Secretary> secList = new ArrayList<>();
         
         for (int i = 0; i < secData.size(); i++) {
             JSONObject current = (JSONObject) secData.get(i);
             UserData.Secretary tempSec = null;
             
             tempSec = new Secretary(current.get("ID").toString(),
-                    current.get("firstName").toString(),
+                    current.get("givenName").toString(),
                     current.get("surname").toString(),
                     current.get("address").toString(),
                     current.get("password").toString());
@@ -116,14 +117,14 @@ public class Database {
     }
     
     private static ArrayList CreateDoctor(JSONArray docData){
-        ArrayList<Doctor> docList = null;
+        ArrayList<Doctor> docList = new ArrayList<>();
         
         for (int i = 0; i < docData.size(); i++) {
             JSONObject current = (JSONObject) docData.get(i);
             UserData.Doctor tempDoc = null;
             
             tempDoc = new Doctor(current.get("ID").toString(),
-                    current.get("firstName").toString(),
+                    current.get("givenName").toString(),
                     current.get("surname").toString(),
                     current.get("address").toString(),
                     current.get("password").toString());
@@ -135,19 +136,18 @@ public class Database {
     }
     
     private static ArrayList CreatePatient(JSONArray patientData){
-        ArrayList<Patient> patientList = null;
+        ArrayList<Patient> patientList = new ArrayList<>();
         
         for (int i = 0; i < patientData.size(); i++) {
             JSONObject current = (JSONObject) patientData.get(i);
             UserData.Patient tempPatient = null;
-            
             tempPatient = new Patient(current.get("ID").toString(),
-                    current.get("firstName").toString(),
+                    current.get("givenName").toString(),
                     current.get("surname").toString(),
                     current.get("address").toString(),
                     current.get("password").toString(), 
-                    (int) current.get("age"),
-                    current.get("gender").toString());
+                    Integer.parseInt(current.get("age").toString()),
+                    current.get("sex").toString());
             
             patientList.add(tempPatient);
         }
