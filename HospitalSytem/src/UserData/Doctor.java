@@ -11,4 +11,15 @@ package UserData;
  */
 public class Doctor extends User {
     
+    public Doctor(String firstName, String surname, String address, String password){
+        super("D", firstName, surname, address, password);
+    }
+    
+    public Doctor(String id, String firstName, String surname, String address, String password){
+        super(id, firstName, surname, address, password);
+    }
+
+    public Doctor(User user) {
+        super(user.ID, user.firstName, user.surname, user.address, user.password);
+    }
 }

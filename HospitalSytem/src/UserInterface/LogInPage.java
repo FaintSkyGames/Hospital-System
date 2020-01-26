@@ -5,6 +5,8 @@
  */
 package UserInterface;
 
+import Controllers.AccessController;
+
 /**
  *
  * @author Geri
@@ -50,6 +52,11 @@ public class LogInPage extends javax.swing.JFrame {
 
         btnLogIn.setLabel("Log In");
         btnLogIn.setName("btnLogIn"); // NOI18N
+        btnLogIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogInActionPerformed(evt);
+            }
+        });
 
         txtID.setName("txtID"); // NOI18N
         txtID.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +125,23 @@ public class LogInPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
+    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
+        String userID = getID();
+        String password = getPassword();
+        
+        
+        AccessController.TryLogIn(userID, password);
+        
+    }//GEN-LAST:event_btnLogInActionPerformed
+
+    private String getID(){
+        return txtID.getText();
+    }
+    
+    private String getPassword(){
+        return passPassword.getText();
+    }
+    
     /**
      * @param args the command line arguments
      */

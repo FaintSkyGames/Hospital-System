@@ -11,4 +11,15 @@ package UserData;
  */
 public class Secretary extends User {
     
+    public Secretary(String firstName, String surname, String address, String password){
+        super("S", firstName, surname, address, password);
+    }
+    
+    public Secretary(String id, String firstName, String surname, String address, String password){
+        super(id, firstName, surname, address, password);
+    }
+    
+    public Secretary(User user){
+        super(user.ID, user.firstName, user.surname, user.address, user.password);
+    }
 }
