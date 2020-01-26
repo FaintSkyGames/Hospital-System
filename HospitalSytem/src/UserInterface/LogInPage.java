@@ -5,7 +5,8 @@
  */
 package UserInterface;
 
-import Controllers.AccessController;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,22 +127,9 @@ public class LogInPage extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
-        String userID = getID();
-        String password = getPassword();
-        
-        
-        AccessController.TryLogIn(userID, password);
-        
+
     }//GEN-LAST:event_btnLogInActionPerformed
 
-    private String getID(){
-        return txtID.getText();
-    }
-    
-    private String getPassword(){
-        return passPassword.getText();
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -186,4 +174,24 @@ public class LogInPage extends javax.swing.JFrame {
     private javax.swing.JPasswordField passPassword;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
+ 
+    public String getID(){
+        return txtID.getText();
+    }
+    
+    public String getPassword(){
+        return passPassword.getText();
+    }
+    
+    void SubmitListen(ActionListener sumbitListen){
+        btnLogIn.addActionListener(sumbitListen);
+    }
+    
+    void NewUserListener(ActionListener newListen){
+        btnNew.addActionListener(newListen);
+    }
+    
+    void DisplayErrorMessage(String errorMessage){
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
 }

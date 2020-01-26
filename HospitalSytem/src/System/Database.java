@@ -20,18 +20,27 @@ import org.json.simple.parser.JSONParser;
  *
  * @author Geri
  */
-public class Database {
+public class Database {    
+    public static ArrayList<Administrator> admins;
+    public static ArrayList<Doctor> doctors;
+    public static ArrayList<Patient> patients;
+    public static ArrayList<Secretary> secs;
     
-    public ArrayList<Administrator> admins;
-    public ArrayList<Doctor> doctors;
-    public ArrayList<Patient> patients;
-    public ArrayList<Secretary> secs;
+    // Singleton
+    private static Database instance = null;
+
+    public static Database Start(){
+        if(instance == null){
+            instance = new Database();
+        }
+        return instance;
+    }
     
-    public Database(){
+    public void Database(){
         GenerateDatabase();
     }
     
-    void GenerateDatabase(){
+    private void GenerateDatabase(){
         
         this.admins = Database.Load("admins.json", "A");
         this.doctors = this.Load("doctors.json", "D");
@@ -150,29 +159,25 @@ public class Database {
      return null;   
     }
     
-    public User GetUser(String id){
-        ArrayList list = null;
+    public static User GetUser(String id){
+        ArrayList<User> list = new ArrayList<User>();
         
-        if (id.startsWith("A")) {
-            list = admins;
-        }
-        else if (id.startsWith("D")) {
-            list = doctors;
-        }
-        else if (id.startsWith("S")){
-            list = secs;
-        }
-        else if (id.startsWith("P")) {
-            list = patients;
-        }
+        list.addAll(admins);
+        list.addAll(doctors);
+        list.addAll(secs);
+        list.addAll(patients);
         
-        for (User user : admins) {
+        
+        for (User user : list) {
             if (user.getID().toUpperCase() == id.toUpperCase()) {
                 return user;
             }
         } 
         return null;
     }
-
+    
+    public int GetTotalAdmin(){
+        return 0;
+    }
    
 }

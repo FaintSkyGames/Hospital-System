@@ -52,7 +52,7 @@ abstract public class User {
             return new Secretary(user);
         }
         else if (user.getID().startsWith("P")) {
-            return new Patient(user);
+            //* return a patient
         }
         
         return null;

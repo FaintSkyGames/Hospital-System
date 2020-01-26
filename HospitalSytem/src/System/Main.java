@@ -6,6 +6,7 @@
 package System;
 
 import System.Database;
+import UserData.*;
 
 /**
  *
@@ -13,9 +14,20 @@ import System.Database;
  */
 public class Main {
     
+    private static User currentUser = null;
+    
     public void Main(){
-        System.Database.generateDatabase();
+        Database.Start();
+    }  
+
+    public static User getCurrentUser() {
+        return currentUser;
     }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+    
     
     
 }

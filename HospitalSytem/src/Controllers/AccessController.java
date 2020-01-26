@@ -5,7 +5,13 @@
  */
 package Controllers;
 
+import UserInterface.LogInPage;
 import System.Database;
+import System.Main;
+import UserData.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 /**
  *
@@ -15,28 +21,46 @@ import System.Database;
 // Controlls who has access to what
 public class AccessController {
     
-    public static void TryLogIn(String userID, String password){
+    private LogInPage view;
+    
+    
+    public void TryLogIn(String userID, String password){
+        User checkUser = null;
+        
+        // Check data's been entered
         if (userID == null | password == null) {
             //* show error *//
             return;
         }
-        
+
+       checkUser = Database.GetUser(userID);
        
-        
-       ////// System.Database.GetUser(userID);
-                
-        //* get users *//
-        //* check users for set user *//
-        //* if no user return *//
-                
-        //* check password *//
-        if (false) {
+       // Check user exsists
+        if (checkUser == null) {
+            //* show error *//
             return;
         }
+           
+        // Check passwords match
+        if (checkUser.getPassword() != password) {
+            //* show error *//
+            return;
+        }
+        
+        Main.setCurrentUser(user);
         
         //* show notifications *//
         //* direct to correct page *//
         
+    }
+    
+    @overrides
+    class LogInPage implements ActionListener{
+        
+        public void actionPerformed(ActionEvent arg0){
+            
+            TryLogIn();
+        }
     }
     
 }
