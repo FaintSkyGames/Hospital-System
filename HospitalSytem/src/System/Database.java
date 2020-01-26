@@ -8,13 +8,14 @@ package System;
 //
 import System.Adapters.ReadJSON;
 import UserData.*;
+import java.io.File;
 
 import java.util.ArrayList;
-
-//JSON for file reading.
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+
+//JSON for file reading.
+
 
 /**
  *
@@ -37,10 +38,10 @@ public class Database {
     }
     
     public void Database(){
-        GenerateDatabase();
+        
     }
     
-    private void GenerateDatabase(){
+    public void GenerateDatabase(){
         
         this.admins = Database.Load("admins.json", "A");
         this.doctors = this.Load("doctors.json", "D");
@@ -50,7 +51,8 @@ public class Database {
     
     private static ArrayList Load(String fileName, String fileType){
         JSONArray data;
-        data = ReadJSON.Import(fileName);
+        
+        data = ReadJSON.Import(new File("data" + File.separator + fileName));
         
         ArrayList arrayList = null; 
         

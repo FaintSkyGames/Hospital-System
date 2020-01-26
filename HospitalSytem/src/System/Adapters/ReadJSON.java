@@ -21,12 +21,13 @@ import org.json.simple.JSONArray;
  */
 public  class ReadJSON {
 
-    public static JSONArray Import(String file){
+    public static JSONArray Import(File file){
         JSONParser parser = new JSONParser();
         JSONArray fileData = null;
         
         try
         {
+            System.err.println(file.toPath().toAbsolutePath().toString());
             JSONObject obj = (JSONObject) parser.parse(new FileReader(file));
             
             fileData = (JSONArray) obj.get(null);
@@ -36,7 +37,7 @@ public  class ReadJSON {
         }
         catch(Exception e)
         {
-            
+            System.out.println(e.getMessage());
         }
         
         return fileData;

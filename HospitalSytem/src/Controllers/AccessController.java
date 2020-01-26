@@ -23,43 +23,65 @@ public class AccessController {
     
     private LogInPage view;
     
+    private void AddListeners(){
+        view.AddSubmitListener(new LoginListener());
+    }
+    
+    public void newView(){
+        view = new LogInPage();
+        view.setVisible(true);
+        AddListeners();
+    }
     
     public void TryLogIn(String userID, String password){
         User checkUser = null;
-        
         // Check data's been entered
         if (userID == null | password == null) {
             //* show error *//
+            view.ClearPassword();
+            view.ClearUserID();
             return;
         }
 
        checkUser = Database.GetUser(userID);
        
+       
+        
        // Check user exsists
         if (checkUser == null) {
             //* show error *//
+            view.ClearPassword();
+            view.ClearUserID();
             return;
         }
            
         // Check passwords match
         if (checkUser.getPassword() != password) {
             //* show error *//
+            view.ClearPassword();
+            view.ClearUserID();
             return;
         }
         
-        Main.setCurrentUser(user);
+        Main.currentUser = checkUser;
         
         //* show notifications *//
         //* direct to correct page *//
+        if (checkUser.getID().startsWith("A")) {
+            Main.adminController.newView();
+            view.dispose();
+        }
         
     }
     
-    @overrides
-    class LogInPage implements ActionListener{
+
+    class LoginListener implements ActionListener{
         
+        @Override
         public void actionPerformed(ActionEvent arg0){
-            
-            TryLogIn();
+            String userID = view.getID();
+            String passString = view.getPassword();
+            TryLogIn(userID, passString);
         }
     }
     

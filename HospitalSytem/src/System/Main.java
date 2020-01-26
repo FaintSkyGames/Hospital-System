@@ -7,27 +7,26 @@ package System;
 
 import System.Database;
 import UserData.*;
+import Controllers.*;
 
 /**
  *
  * @author Geri
  */
 public class Main {
+    public static AccessController accessController = new AccessController();
+    public static DoctorController doctorController = new DoctorController();
+    public static PatientController patientController = new PatientController();
+    public static SecretaryController secretaryController = new SecretaryController();
+    public static AdminController adminController = new AdminController();
     
-    private static User currentUser = null;
+    public static Database data = new Database();
+    public static User currentUser = null;
     
-    public void Main(){
-        Database.Start();
-    }  
-
-    public static User getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
-    
+    public static void main(String args[]) {
+        data.GenerateDatabase();
+        accessController.newView();
+    }    
     
     
 }
