@@ -6,6 +6,9 @@
 package Controllers;
 
 import UserInterface.AdministratorPage;
+import System.Main;
+import UserData.Administrator;
+import UserData.User;
 
 /**
  *
@@ -13,10 +16,26 @@ import UserInterface.AdministratorPage;
  */
 public class AdminController {
     private AdministratorPage view;
-    public void newView(){
+    
+    private Administrator currentUser;
+    
+    public void initialiseAdminView(Administrator admin){
+        currentUser = admin;
         view = new AdministratorPage();
-        view.setVisible(true);       
+        view.setVisible(true);  
+
+        
+        String id = currentUser.getID();
+        String firstName = currentUser.getFirstName();
+        String surname = currentUser.getSurname();
+        String address = currentUser.getAddress();
+        
+        view.SetDisplayedData(id, firstName + " " + surname, address);
+        
     }
+
+    
+    
     
     
     

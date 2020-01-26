@@ -18,6 +18,12 @@ public class SecretaryPage extends javax.swing.JFrame {
         initComponents();
     }
 
+     public void SetDisplayedData(String id, String name, String address){
+        lbID.setText("ID: " + id);
+        lbName.setText("Name: " + name);
+        lbAddress.setText("Address: " + address);
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

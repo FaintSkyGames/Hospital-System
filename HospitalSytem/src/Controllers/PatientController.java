@@ -6,6 +6,7 @@
 package Controllers;
 
 import UserInterface.PatientPage;
+import UserData.Patient;
 
 /**
  *
@@ -13,8 +14,23 @@ import UserInterface.PatientPage;
  */
 public class PatientController {
     private PatientPage view;
-    public void newView(){
+    
+    private Patient currentUser;
+    
+    public void initialisePatientView(Patient patient){
+        currentUser = patient;
         view = new PatientPage();
-        view.setVisible(true);       
+        view.setVisible(true); 
+        
+        String id = currentUser.getID();
+        String firstName = currentUser.getFirstName();
+        String surname = currentUser.getSurname();
+        String address = currentUser.getAddress();
+        String age = Integer.toString(currentUser.getAge());
+        String gender = currentUser.getGender();
+        
+        view.SetDisplayedData(id, firstName + " " + surname, age, gender, address);
     }
+    
+    
 }

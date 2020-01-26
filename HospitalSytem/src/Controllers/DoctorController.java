@@ -6,6 +6,7 @@
 package Controllers;
 
 import UserInterface.DoctorPage;
+import UserData.Doctor;
 
 /**
  *
@@ -13,9 +14,20 @@ import UserInterface.DoctorPage;
  */
 public class DoctorController {
     private DoctorPage view;
-    public void newView(){
+    
+    private Doctor currentUser;
+    
+    public void initialiseDoctorView(Doctor doctor){
+        currentUser = doctor;
         view = new DoctorPage();
-        view.setVisible(true);       
+        view.setVisible(true); 
+        
+        String id = currentUser.getID();
+        String firstName = currentUser.getFirstName();
+        String surname = currentUser.getSurname();
+        String address = currentUser.getAddress();
+        
+        view.SetDisplayedData(id, firstName + " " + surname, address);
     }
     
 }

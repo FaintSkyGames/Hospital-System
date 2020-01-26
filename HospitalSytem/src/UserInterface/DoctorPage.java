@@ -17,6 +17,12 @@ public class DoctorPage extends javax.swing.JFrame {
     public DoctorPage() {
         initComponents();
     }
+    
+     public void SetDisplayedData(String id, String name, String address){
+        lbID.setText("ID: " + id);
+        lbName.setText("Name: " + name);
+        lbAddress.setText("Address: " + address);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

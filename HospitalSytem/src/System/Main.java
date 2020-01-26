@@ -21,7 +21,6 @@ public class Main {
     public static AdminController adminController = new AdminController();
     
     public static Database data = new Database();
-    public static User currentUser = null;
     
     public static void main(String args[]) {
         data.GenerateDatabase();

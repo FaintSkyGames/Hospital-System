@@ -63,14 +63,24 @@ public class AccessController {
             return;
         }
         
-        Main.currentUser = checkUser;
-        
         //* show notifications *//
         //* direct to correct page *//
         if (checkUser.getID().startsWith("A")) {
             view.dispose();
-            Main.adminController.newView();
-            
+            Main.adminController.initialiseAdminView((Administrator) checkUser);
+        }
+        else if (checkUser.getID().startsWith("D")) {
+            view.dispose();
+            Main.doctorController.initialiseDoctorView((Doctor) checkUser);
+        }
+        else if (checkUser.getID().startsWith("S")) {
+            view.dispose();
+            Main.secretaryController.initaliseSecretaryView((Secretary) checkUser);
+        }
+        else{
+            view.dispose();
+            Main.patientController.initialisePatientView((Patient) checkUser);
+        
         }
         
     }
