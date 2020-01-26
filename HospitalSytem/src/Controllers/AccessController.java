@@ -56,7 +56,7 @@ public class AccessController {
         }
            
         // Check passwords match
-        if (checkUser.getPassword() != password) {
+        if (!checkUser.getPassword().equalsIgnoreCase(password)) {
             //* show error *//
             view.ClearPassword();
             view.ClearUserID();
@@ -68,8 +68,9 @@ public class AccessController {
         //* show notifications *//
         //* direct to correct page *//
         if (checkUser.getID().startsWith("A")) {
-            Main.adminController.newView();
             view.dispose();
+            Main.adminController.newView();
+            
         }
         
     }

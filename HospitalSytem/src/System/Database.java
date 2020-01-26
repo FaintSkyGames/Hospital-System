@@ -168,10 +168,12 @@ public class Database {
         list.addAll(doctors);
         list.addAll(secs);
         list.addAll(patients);
-        
+        System.out.println("ID = " + id);
         
         for (User user : list) {
-            if (user.getID().toUpperCase() == id.toUpperCase()) {
+            System.out.println(user.getID() + ", " + user.getPassword());
+            
+            if (user.getID().equalsIgnoreCase(id)) {
                 return user;
             }
         } 
