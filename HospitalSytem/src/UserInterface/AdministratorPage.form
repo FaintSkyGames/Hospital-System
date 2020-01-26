@@ -118,7 +118,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnAppointment" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRating" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnFeedback" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -134,7 +134,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="btnAppointment" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRating" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnFeedback" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -155,7 +155,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFeedbackActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAppointment">
+        <Component class="javax.swing.JButton" name="btnRating">
           <Properties>
             <Property name="text" type="java.lang.String" value="View doctors&apos; ratings"/>
           </Properties>

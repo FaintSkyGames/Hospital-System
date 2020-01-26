@@ -5,6 +5,8 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Geri
@@ -40,7 +42,7 @@ public class AdministratorPage extends javax.swing.JFrame {
         lbAddress = new javax.swing.JLabel();
         pOptions = new javax.swing.JPanel();
         btnFeedback = new javax.swing.JButton();
-        btnAppointment = new javax.swing.JButton();
+        btnRating = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
 
@@ -86,7 +88,7 @@ public class AdministratorPage extends javax.swing.JFrame {
             }
         });
 
-        btnAppointment.setText("View doctors' ratings");
+        btnRating.setText("View doctors' ratings");
 
         btnAdd.setText("Add Doctor or Secretary");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +112,7 @@ public class AdministratorPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdd)
-                    .addComponent(btnAppointment)
+                    .addComponent(btnRating)
                     .addComponent(btnFeedback))
                 .addGap(50, 50, 50))
             .addGroup(pOptionsLayout.createSequentialGroup()
@@ -122,7 +124,7 @@ public class AdministratorPage extends javax.swing.JFrame {
             pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pOptionsLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(btnAppointment)
+                .addComponent(btnRating)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFeedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -211,8 +213,8 @@ public class AdministratorPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnFeedback;
+    private javax.swing.JButton btnRating;
     private javax.swing.JButton btnRemove;
     private javax.swing.JLabel lbAddress;
     private javax.swing.JLabel lbID;
@@ -221,4 +223,23 @@ public class AdministratorPage extends javax.swing.JFrame {
     private javax.swing.JPanel pData;
     private javax.swing.JPanel pOptions;
     // End of variables declaration//GEN-END:variables
+
+    public void AddDoctorRatingListener(ActionListener listener){
+        btnRating.addActionListener(listener);
+    }
+    
+    public void AddFeedbackListener(ActionListener listener){
+        btnFeedback.addActionListener(listener);
+    }
+    
+    public void AddNewUserListener(ActionListener listener){
+        btnAdd.addActionListener(listener);
+    }
+    
+    public void AddRemoveUserListener(ActionListener listener){
+        btnRemove.addActionListener(listener);
+    }
+    
+    
+
 }
