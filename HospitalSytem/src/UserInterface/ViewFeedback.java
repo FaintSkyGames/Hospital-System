@@ -239,6 +239,7 @@ public class ViewFeedback extends javax.swing.JFrame {
         });
     }
     
+    
     public void SetDoctors(Object[] doctorIDs){
         SetComboBoxData(doctorIDs);
     }
@@ -278,6 +279,10 @@ public class ViewFeedback extends javax.swing.JFrame {
     
     public void AddDocotorChangeListener(ActionListener listener){
         cbDoctorID.addActionListener(listener);
+    }
+    
+    public void AddSubmitFeedbackSummaryListener(ActionListener listener){
+        btnSubmit.addActionListener(listener);        
     }
 
 }

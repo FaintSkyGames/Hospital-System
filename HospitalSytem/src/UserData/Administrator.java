@@ -11,6 +11,15 @@ package UserData;
  */
 public class Administrator extends User {
     
+    @Override
+    public void test(){
+        System.out.println("Admin.test()");
+    }
+    
+    public Administrator(){
+        
+    }
+    
     public Administrator(String firstName, String surname, String address, String password){
         super("A", firstName, surname, address, password);
     }
@@ -23,8 +32,8 @@ public class Administrator extends User {
     //*    super(object);   
     //* }
 
-    public Administrator(User user) {
-        super(user.ID, user.firstName, user.surname, user.address, user.password);
+    public Administrator(String[] user, String userType, int numberOfType){
+        super(user, userType, numberOfType);
     }
     
     

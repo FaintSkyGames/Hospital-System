@@ -11,6 +11,7 @@ import UserInterface.RemoveUsers;
 import UserInterface.AdministratorPage;
 import System.Main;
 import System.Database;
+import System.Factories.CreateUser;
 import UserData.Administrator;
 import UserData.Doctor;
 import UserData.User;
@@ -27,9 +28,11 @@ import java.util.ArrayList;
 public class AdminController {
     private AdministratorPage homeView;
     private ViewFeedback feedbackView;
+    private static CreateAccount createAccount;
     
     private Administrator currentUser;
     
+    // Listeners and code for admin menu
     public void initialiseAdminView(Administrator admin){
         currentUser = admin;
         homeView = new AdministratorPage();
@@ -64,9 +67,7 @@ public class AdminController {
     class NewUserListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            CreateAccount createAccountView = new CreateAccount();
-            homeView.dispose();
-            createAccountView.setVisible(true);
+            initialiseCreateUserView();
         }
     }
     
@@ -79,6 +80,9 @@ public class AdminController {
         }
     }
     
+    
+    // Listeners and code for showing feedback
+    // Also allows for admin to submit feedback summaries
     private void initialiseFeedbackView(){
         feedbackView = new ViewFeedback();
         homeView.dispose();
@@ -96,6 +100,8 @@ public class AdminController {
         //* set feedback
 
         AddFeedbackListeners();
+        
+        System.out.println("Admin");
     }
     
     public void setDoctorFeedbackInformation(){
@@ -107,11 +113,12 @@ public class AdminController {
     }
     
     private void AddFeedbackListeners(){
-        feedbackView.AddAdminReturnListener(new AdminReturnListener());
+        feedbackView.AddAdminReturnListener(new AdminReturnFromFeedbackListener());
         feedbackView.AddDocotorChangeListener(new FeedbackDoctorChangeListener());
+        feedbackView.AddSubmitFeedbackSummaryListener(new SubmitSummaryListener());
     }
     
-    class AdminReturnListener implements ActionListener{
+    class AdminReturnFromFeedbackListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
             feedbackView.dispose();
@@ -125,6 +132,56 @@ public class AdminController {
             setDoctorFeedbackInformation();
         }
     }
+    
+    class SubmitSummaryListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            //*
+        }
+    }
+    
+    //
+    private void initialiseCreateUserView(){
+        createAccount = new CreateAccount();
+        homeView.dispose();
+        createAccount.setVisible(true);
+        
+        AddCreateUserListeners();
+    }
+    
+    private static void CreateUser(){
+        String[] userData = new String[7];
+        
+                
+        CreateUser.main(createAccount.GetUserType(), userData);
+        
+    }
+    
+    private void AddCreateUserListeners(){
+        createAccount.AddAdminReturnListener(new AdminReturnFromCreateUserListener());
+        createAccount.AddSubmitNewUserListener(new SubmitNewUserListener());
+    }
+    
+    class AdminReturnFromCreateUserListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            createAccount.dispose();
+            initialiseAdminView(currentUser);
+        }
+    }
+    
+    class SubmitNewUserListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            CreateUser();
+            //* make new user
+            //* say user made
+            createAccount.dispose();
+            initialiseAdminView(currentUser);
+        }
+    }
+    
+    
     
     
 

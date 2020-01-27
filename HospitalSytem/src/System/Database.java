@@ -194,8 +194,35 @@ public class Database {
         return secs;
     }
     
-    public int GetTotalAdmin(){
-        return 0;
+    public static void AddUserToDatabase(User user){
+       if (user.getID().startsWith("A")) {
+           admins.add((Administrator) user);
+       }
+       else if (user.getID().startsWith("D")) {
+           doctors.add((Doctor) user);
+       }
+       else if (user.getID().startsWith("S")) {
+           secs.add((Secretary) user);
+       }
+       else if (user.getID().startsWith("P")){
+           patients.add((Patient) user);
+       }
+   }
+   
+    public static int GetNumberOfAdmins(){
+        return admins.size();
+    }
+    
+    public static int GetNumberOfDoctors(){
+        return doctors.size();
+    }
+    
+    public static int GetNumberOfPatients(){
+        return patients.size();
+    }
+    
+    public static int GetNumberOfSecretaries(){
+        return secs.size();
     }
    
 }

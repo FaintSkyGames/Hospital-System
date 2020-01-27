@@ -13,6 +13,15 @@ public class Patient extends User {
     protected int age;
     protected String gender;
     
+    @Override
+    public void test(){
+        System.out.println("Patient.test()");
+    }
+    
+    public Patient(){
+        
+    }
+    
     public Patient(String firstName, String surname, String address, String password, int age, String gender){
         super("P", firstName, surname, address, password);
         
@@ -34,6 +43,13 @@ public class Patient extends User {
     //*     this.age = age;
     //*     this.gender = gender;
     //* }
+    
+    public Patient(String[] user, String userType, int numberOfType){
+        super(user, userType, numberOfType);
+    
+        this.age = Integer.parseInt(user[4]);
+        this.gender = user[5];
+    }
 
     public int getAge() {
         return age;

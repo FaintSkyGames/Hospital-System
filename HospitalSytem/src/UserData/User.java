@@ -25,6 +25,10 @@ abstract public class User {
         this.password = "";
     }
     
+    public void test(){
+        System.out.println("User.test()");
+    }
+    
     public User(String userType, String firstName, String surname, String address, String password){
         this.ID = userType; // gen ids later
         this.firstName = firstName;
@@ -33,14 +37,15 @@ abstract public class User {
         this.password = password;
     }
     
-    public User(User user){
-        this.ID = user.ID;
-        this.firstName = user.firstName;
-        this.surname = user.surname;
-        this.address = user.address;
-        this.password = user.password;
+    public User(String[] user, String userType, int numberOfType){
+        this.ID = generateID(userType, Integer.toString(numberOfType));
+        this.firstName = user[0];
+        this.surname = user[1];
+        this.address = user[2];
+        this.password = user[3];
     }
     
+    /*
     public User CreateCorrectUser(User user){
         if (user.getID().startsWith("A")) {
             return new Administrator(user);
@@ -57,20 +62,21 @@ abstract public class User {
         
         return null;
     }
+    */
     
     
-    private String generateID(String userType){
+    private String generateID(String userType, String currentMaxID){
         String idNumbers = "";
-        
-        //* current maxid = Find number of said type *//
-        //* idNumbers = maxid + 1 *//
-        
+        idNumbers = currentMaxID + 1;        
 
         // Ensure that ID has correct length
         if (idNumbers.length() == 1) {
-            idNumbers = "00" + idNumbers;
+            idNumbers = "000" + idNumbers;
         }
         else if (idNumbers.length() == 2) {
+            idNumbers = "00" + idNumbers;
+        }
+        else if (idNumbers.length() == 3){
             idNumbers = "0" + idNumbers;
         }
         

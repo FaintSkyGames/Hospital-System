@@ -11,6 +11,15 @@ package UserData;
  */
 public class Doctor extends User {
     
+    @Override
+    public void test(){
+        System.out.println("Doctor.test()");
+    }
+    
+    public Doctor(){
+        
+    }
+    
     public Doctor(String firstName, String surname, String address, String password){
         super("D", firstName, surname, address, password);
     }
@@ -19,7 +28,7 @@ public class Doctor extends User {
         super(id, firstName, surname, address, password);
     }
 
-    public Doctor(User user) {
-        super(user.ID, user.firstName, user.surname, user.address, user.password);
+    public Doctor(String[] user, String userType, int numberOfType){
+        super(user, userType, numberOfType);
     }
 }

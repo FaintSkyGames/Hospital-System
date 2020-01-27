@@ -5,6 +5,8 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Geri
@@ -38,6 +40,8 @@ public class CreateAccount extends javax.swing.JFrame {
         txtSurname = new javax.swing.JTextField();
         cbType = new javax.swing.JComboBox<>();
         lbType = new javax.swing.JLabel();
+        lbPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,9 +68,11 @@ public class CreateAccount extends javax.swing.JFrame {
 
         lbAddress.setText("Address");
 
-        cbType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Secretary", "Doctor", "Administrator" }));
 
         lbType.setText("Account Type");
+
+        lbPassword.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +88,10 @@ public class CreateAccount extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbPassword)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbAddress)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,7 +140,11 @@ public class CreateAccount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAddress)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(btnSubmit)
                 .addGap(23, 23, 23))
         );
@@ -180,6 +194,10 @@ public class CreateAccount extends javax.swing.JFrame {
             }
         });
     }
+    
+    public String GetUserType(){
+        return cbType.getSelectedItem().toString();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -187,11 +205,22 @@ public class CreateAccount extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbType;
     private javax.swing.JLabel lbAddress;
     private javax.swing.JLabel lbFirstName;
+    private javax.swing.JLabel lbPassword;
     private javax.swing.JLabel lbSurname;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JLabel lbType;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
+
+    public void AddAdminReturnListener(ActionListener listener){
+        btnBack.addActionListener(listener);
+    }
+    
+    public void AddSubmitNewUserListener(ActionListener listener){
+        btnSubmit.addActionListener(listener);        
+    }
+
 }

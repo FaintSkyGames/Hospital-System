@@ -11,6 +11,15 @@ package UserData;
  */
 public class Secretary extends User {
     
+    @Override
+    public void test(){
+        System.out.println("Sec.test()");
+    }
+    
+    public Secretary(){
+        
+    }
+    
     public Secretary(String firstName, String surname, String address, String password){
         super("S", firstName, surname, address, password);
     }
@@ -19,7 +28,8 @@ public class Secretary extends User {
         super(id, firstName, surname, address, password);
     }
     
-    public Secretary(User user){
-        super(user.ID, user.firstName, user.surname, user.address, user.password);
+    public Secretary(String[] user, String userType, int numberOfType){
+        super(user, userType, numberOfType);
     }
+    
 }
