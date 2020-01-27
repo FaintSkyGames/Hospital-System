@@ -41,7 +41,6 @@ public class AdministratorPage extends javax.swing.JFrame {
         lbName = new javax.swing.JLabel();
         lbAddress = new javax.swing.JLabel();
         pOptions = new javax.swing.JPanel();
-        btnFeedback = new javax.swing.JButton();
         btnRating = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
@@ -81,14 +80,7 @@ public class AdministratorPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnFeedback.setText("Give Feedback");
-        btnFeedback.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFeedbackActionPerformed(evt);
-            }
-        });
-
-        btnRating.setText("View doctors' ratings");
+        btnRating.setText("View doctors' ratings & Give Feedback");
 
         btnAdd.setText("Add Doctor or Secretary");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -108,25 +100,19 @@ public class AdministratorPage extends javax.swing.JFrame {
         pOptions.setLayout(pOptionsLayout);
         pOptionsLayout.setHorizontalGroup(
             pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pOptionsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdd)
-                    .addComponent(btnRating)
-                    .addComponent(btnFeedback))
-                .addGap(50, 50, 50))
             .addGroup(pOptionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnRemove)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRating, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pOptionsLayout.setVerticalGroup(
             pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pOptionsLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btnRating)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFeedback)
+                .addGap(49, 49, 49)
+                .addComponent(btnRating, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAdd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -142,12 +128,12 @@ public class AdministratorPage extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(pData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(131, 131, 131)
                 .addComponent(lbTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,10 +149,6 @@ public class AdministratorPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedbackActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFeedbackActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
@@ -213,7 +195,6 @@ public class AdministratorPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnFeedback;
     private javax.swing.JButton btnRating;
     private javax.swing.JButton btnRemove;
     private javax.swing.JLabel lbAddress;
@@ -226,10 +207,6 @@ public class AdministratorPage extends javax.swing.JFrame {
 
     public void AddDoctorRatingListener(ActionListener listener){
         btnRating.addActionListener(listener);
-    }
-    
-    public void AddFeedbackListener(ActionListener listener){
-        btnFeedback.addActionListener(listener);
     }
     
     public void AddNewUserListener(ActionListener listener){

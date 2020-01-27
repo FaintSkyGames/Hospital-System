@@ -178,6 +178,22 @@ public class Database {
         return null;
     }
     
+    public static ArrayList GetDoctors(){
+        return doctors;
+    }
+    
+    public ArrayList GetAdmins(){
+        return admins;
+    }
+    
+    public ArrayList GetPatients(){
+        return patients;
+    }
+    
+    public ArrayList GetSecs(){
+        return secs;
+    }
+    
     public int GetTotalAdmin(){
         return 0;
     }

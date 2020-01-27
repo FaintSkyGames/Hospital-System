@@ -5,6 +5,11 @@
  */
 package UserInterface;
 
+import Controllers.AdminController;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Geri
@@ -16,6 +21,11 @@ public class ViewFeedback extends javax.swing.JFrame {
      */
     public ViewFeedback() {
         initComponents();
+    }
+    
+    public void SetComboBoxData(Object[] ids){
+        DefaultComboBoxModel dm = new DefaultComboBoxModel(ids);
+        cbDoctorID.setModel(dm);
     }
 
     /**
@@ -31,8 +41,8 @@ public class ViewFeedback extends javax.swing.JFrame {
         pDoctor = new javax.swing.JPanel();
         lbNameDoctor = new javax.swing.JLabel();
         lbIDDoctor = new javax.swing.JLabel();
-        cbNameDoctor = new javax.swing.JComboBox<>();
-        txtIDDoctor = new javax.swing.JTextField();
+        cbDoctorID = new javax.swing.JComboBox<>();
+        txtDoctorName = new javax.swing.JTextField();
         txtAddressDoctor = new javax.swing.JTextField();
         lbAddressDoctor = new javax.swing.JLabel();
         pFeedback = new javax.swing.JPanel();
@@ -55,7 +65,8 @@ public class ViewFeedback extends javax.swing.JFrame {
 
         lbIDDoctor.setText("Doctor ID");
 
-        cbNameDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDoctorID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDoctorID.setAutoscrolls(true);
 
         lbAddressDoctor.setText("Address");
 
@@ -72,8 +83,8 @@ public class ViewFeedback extends javax.swing.JFrame {
                             .addComponent(lbIDDoctor))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pDoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIDDoctor)
-                            .addComponent(cbNameDoctor, 0, 148, Short.MAX_VALUE)))
+                            .addComponent(txtDoctorName)
+                            .addComponent(cbDoctorID, 0, 148, Short.MAX_VALUE)))
                     .addGroup(pDoctorLayout.createSequentialGroup()
                         .addComponent(lbAddressDoctor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -83,14 +94,14 @@ public class ViewFeedback extends javax.swing.JFrame {
         pDoctorLayout.setVerticalGroup(
             pDoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pDoctorLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pDoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNameDoctor)
-                    .addComponent(cbNameDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbDoctorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbIDDoctor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pDoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbIDDoctor)
-                    .addComponent(txtIDDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNameDoctor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pDoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAddressDoctor)
@@ -177,9 +188,9 @@ public class ViewFeedback extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(23, 23, 23)
                         .addComponent(pDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,11 +238,27 @@ public class ViewFeedback extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void SetDoctors(Object[] doctorIDs){
+        SetComboBoxData(doctorIDs);
+    }
+    
+    public String GetCurrentDoctor(){
+        return cbDoctorID.getSelectedItem().toString();
+    }
+    
+    public void SetDoctorName(String name){
+        txtDoctorName.setText(name);
+    }
+    
+    public void SetAddress(String address) {
+        txtAddressDoctor.setText(address);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JComboBox<String> cbNameDoctor;
+    private javax.swing.JComboBox<String> cbDoctorID;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAddressDoctor;
     private javax.swing.JLabel lbIDDoctor;
@@ -242,6 +269,15 @@ public class ViewFeedback extends javax.swing.JFrame {
     private javax.swing.JTable tbFeedback;
     private javax.swing.JTextField txtAddressDoctor;
     private javax.swing.JTextField txtComment;
-    private javax.swing.JTextField txtIDDoctor;
+    private javax.swing.JTextField txtDoctorName;
     // End of variables declaration//GEN-END:variables
+
+    public void AddAdminReturnListener(ActionListener listener){
+        btnBack.addActionListener(listener);
+    }
+    
+    public void AddDocotorChangeListener(ActionListener listener){
+        cbDoctorID.addActionListener(listener);
+    }
+
 }
