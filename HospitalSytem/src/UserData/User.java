@@ -38,7 +38,7 @@ abstract public class User {
     }
     
     public User(String[] user, String userType, int numberOfType){
-        this.ID = generateID(userType, Integer.toString(numberOfType));
+        this.ID = generateID(userType, numberOfType);
         this.firstName = user[0];
         this.surname = user[1];
         this.address = user[2];
@@ -65,9 +65,9 @@ abstract public class User {
     */
     
     
-    private String generateID(String userType, String currentMaxID){
+    private String generateID(String userType, int currentMaxID){
         String idNumbers = "";
-        idNumbers = currentMaxID + 1;        
+        idNumbers = Integer.toString(currentMaxID + 1);        
 
         // Ensure that ID has correct length
         if (idNumbers.length() == 1) {

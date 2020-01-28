@@ -198,7 +198,25 @@ public class CreateAccount extends javax.swing.JFrame {
     public String GetUserType(){
         return cbType.getSelectedItem().toString();
     }
-
+    
+    public String GetFirstName(){
+        return txtFirstName.getText();
+    }
+    
+    public String GetSurname(){
+        return txtSurname.getText();
+    }
+    
+    public String GetAddress(){
+        return txtAddress.getText();
+    }
+    
+    public String GetPassword(){
+        return txtPassword.getText();
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;

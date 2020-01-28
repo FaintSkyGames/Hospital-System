@@ -5,6 +5,8 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Geri
@@ -44,11 +46,11 @@ public class PatientPage extends javax.swing.JFrame {
         lbAddress = new javax.swing.JLabel();
         pOptions = new javax.swing.JPanel();
         btnFeedback = new javax.swing.JButton();
+        btnTerminate = new javax.swing.JButton();
         btnRatings = new javax.swing.JButton();
         btnAppointment = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         btnPrescription = new javax.swing.JButton();
-        btnTermination = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,15 +100,15 @@ public class PatientPage extends javax.swing.JFrame {
 
         btnFeedback.setText("Rate Doctor & Give Feedback");
 
-        btnRatings.setText("Request account termination");
+        btnTerminate.setText("Request account termination");
 
-        btnAppointment.setText("View doctors' ratings");
+        btnRatings.setText("View doctors' ratings");
 
-        btnHistory.setText("Request appointment");
+        btnAppointment.setText("Request appointment");
 
-        btnPrescription.setText("View history");
+        btnHistory.setText("View history");
 
-        btnTermination.setText("View prescription");
+        btnPrescription.setText("View prescription");
 
         javax.swing.GroupLayout pOptionsLayout = new javax.swing.GroupLayout(pOptions);
         pOptions.setLayout(pOptionsLayout);
@@ -115,11 +117,11 @@ public class PatientPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pOptionsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRatings)
-                    .addComponent(btnTermination)
+                    .addComponent(btnTerminate)
                     .addComponent(btnPrescription)
                     .addComponent(btnHistory)
                     .addComponent(btnAppointment)
+                    .addComponent(btnRatings)
                     .addComponent(btnFeedback))
                 .addContainerGap())
         );
@@ -129,15 +131,15 @@ public class PatientPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnFeedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRatings)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAppointment)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTermination)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRatings)
+                .addComponent(btnTerminate)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -213,7 +215,7 @@ public class PatientPage extends javax.swing.JFrame {
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnPrescription;
     private javax.swing.JButton btnRatings;
-    private javax.swing.JButton btnTermination;
+    private javax.swing.JButton btnTerminate;
     private javax.swing.JLabel lbAddress;
     private javax.swing.JLabel lbAge;
     private javax.swing.JLabel lbGender;
@@ -223,4 +225,26 @@ public class PatientPage extends javax.swing.JFrame {
     private javax.swing.JPanel pData;
     private javax.swing.JPanel pOptions;
     // End of variables declaration//GEN-END:variables
+
+    public void AddLeaveFeedbackListener(ActionListener listener)
+    {
+        btnFeedback.addActionListener(listener);
+    }
+    public void AddDoctorRatingListener(ActionListener listener){
+        btnRatings.addActionListener(listener);
+    }
+    public void AddRequestAppointmentListener(ActionListener listener){
+        btnAppointment.addActionListener(listener);
+    }
+    public void AddViewHistoryListener(ActionListener listener){
+        btnHistory.addActionListener(listener);
+    }
+    public void AddPrescription(ActionListener listener){
+        btnPrescription.addActionListener(listener);
+    }
+    public void AddTerminationRequestListener(ActionListener listener){
+        btnTerminate.addActionListener(listener);
+    }
+
+
 }

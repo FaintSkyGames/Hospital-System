@@ -137,11 +137,11 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnRatings" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnTermination" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnTerminate" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnPrescription" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnHistory" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAppointment" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRatings" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnFeedback" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -154,15 +154,15 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnFeedback" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnRatings" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnAppointment" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnHistory" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnPrescription" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnTermination" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnRatings" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTerminate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -174,27 +174,27 @@
             <Property name="text" type="java.lang.String" value="Rate Doctor &amp; Give Feedback"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRatings">
+        <Component class="javax.swing.JButton" name="btnTerminate">
           <Properties>
             <Property name="text" type="java.lang.String" value="Request account termination"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAppointment">
+        <Component class="javax.swing.JButton" name="btnRatings">
           <Properties>
             <Property name="text" type="java.lang.String" value="View doctors&apos; ratings"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnHistory">
+        <Component class="javax.swing.JButton" name="btnAppointment">
           <Properties>
             <Property name="text" type="java.lang.String" value="Request appointment"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnPrescription">
+        <Component class="javax.swing.JButton" name="btnHistory">
           <Properties>
             <Property name="text" type="java.lang.String" value="View history"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnTermination">
+        <Component class="javax.swing.JButton" name="btnPrescription">
           <Properties>
             <Property name="text" type="java.lang.String" value="View prescription"/>
           </Properties>

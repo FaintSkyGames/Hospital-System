@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import System.Adapters.WriteJSON;
 import UserInterface.ViewFeedback;
 import UserInterface.CreateAccount;
 import UserInterface.RemoveUsers;
@@ -12,14 +13,16 @@ import UserInterface.AdministratorPage;
 import System.Main;
 import System.Database;
 import System.Factories.CreateUser;
-import UserData.Administrator;
-import UserData.Doctor;
-import UserData.User;
+import UserData.*;
 
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +32,7 @@ public class AdminController {
     private AdministratorPage homeView;
     private ViewFeedback feedbackView;
     private static CreateAccount createAccount;
+    private RemoveUsers removeUsers;
     
     private Administrator currentUser;
     
@@ -74,9 +78,7 @@ public class AdminController {
     class RemoveUserListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            RemoveUsers removeUserView = new RemoveUsers();
-            homeView.dispose();
-            removeUserView.setVisible(true);
+            initialiseRemoveUserView();
         }
     }
     
@@ -140,7 +142,8 @@ public class AdminController {
         }
     }
     
-    //
+    
+    //Listeners and code for making a new user
     private void initialiseCreateUserView(){
         createAccount = new CreateAccount();
         homeView.dispose();
@@ -151,10 +154,12 @@ public class AdminController {
     
     private static void CreateUser(){
         String[] userData = new String[7];
-        
+        userData[0] = createAccount.GetFirstName();
+        userData[1] = createAccount.GetSurname();
+        userData[2] = createAccount.GetAddress();
+        userData[3] = createAccount.GetPassword();                
                 
-        CreateUser.main(createAccount.GetUserType(), userData);
-        
+        CreateUser.main(createAccount.GetUserType(), userData);       
     }
     
     private void AddCreateUserListeners(){
@@ -182,7 +187,90 @@ public class AdminController {
     }
     
     
+    //
+    private void initialiseRemoveUserView(){
+        removeUsers = new RemoveUsers();
+        homeView.dispose();
+        removeUsers.setVisible(true);
+        
+        removeUsers.CreateColumns();
+        UpdateTable();
+        
+        AddRemoveUserListeners();
+    }
     
+    private void UpdateTable(){
+
+        for (Administrator admin : Database.admins) {
+            if (admin != currentUser) {
+                removeUsers.Populate(admin.getID(), 
+                        admin.getFirstName() + " " + admin.getSurname(), 
+                        "Admin");
+            }
+        }
+        
+        for (Doctor doctor : Database.doctors) {
+            removeUsers.Populate(doctor.getID(), 
+                    doctor.getFirstName() + " " + doctor.getSurname(), 
+                    "Doctor");
+        }
+        
+        for (Secretary sec : Database.secs) {
+            removeUsers.Populate(sec.getID(),
+                    sec.getFirstName() + " " + sec.getSurname(),
+                    "Secretary");
+        }
+        
+        for (Patient patient : Database.patients) {
+            removeUsers.Populate(patient.getID(), 
+                    patient.getFirstName() + " " + patient.getSurname(), 
+                    "Patient");
+        }        
+    }
+    
+    private void ShowUserData(){
+        User user = Database.GetUser(removeUsers.GetSelectedID());
+        
+        removeUsers.SetTxtName(user.getFirstName() + " " + user.getSurname());
+        removeUsers.SetTxtID(user.getID());
+        removeUsers.SetTxtAddress(user.getAddress());
+    }
+    
+    private void RemoveSelectedUser(){
+        Database.RemoveUserFromDatabase(removeUsers.GetSelectedID());
+        removeUsers.dispose();
+        //WriteJSON.Export();
+        initialiseAdminView(currentUser);
+        
+    }
+    
+    private void AddRemoveUserListeners(){
+        removeUsers.AddAdminReturnListener(new AdminReturnFromRemoveUserListener());
+        removeUsers.AddDeleteUserListener(new DeleteUserListener());
+        removeUsers.AddShowUserDataListener(new ShowUserListener());
+    }
+    
+    class AdminReturnFromRemoveUserListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            removeUsers.dispose();
+            initialiseAdminView(currentUser);
+        }
+    }
+    
+    class DeleteUserListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            RemoveSelectedUser();
+        }
+    }
+    
+    class ShowUserListener implements ListSelectionListener{
+        @Override
+        public void valueChanged(ListSelectionEvent e){
+            ShowUserData();
+        }
+    }
     
 
     

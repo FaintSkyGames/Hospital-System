@@ -49,6 +49,8 @@ public class Database {
         this.secs = this.Load("secretaries.json", "S");
     }
     
+    
+    
     private static ArrayList Load(String fileName, String fileType){
         JSONArray data;
         
@@ -182,15 +184,15 @@ public class Database {
         return doctors;
     }
     
-    public ArrayList GetAdmins(){
+    public static ArrayList GetAdmins(){
         return admins;
     }
     
-    public ArrayList GetPatients(){
+    public static ArrayList GetPatients(){
         return patients;
     }
     
-    public ArrayList GetSecs(){
+    public static ArrayList GetSecs(){
         return secs;
     }
     
@@ -209,6 +211,23 @@ public class Database {
        }
    }
    
+    public static void RemoveUserFromDatabase(String userID) {
+        User user = GetUser(userID);
+        
+        if (userID.startsWith("A")) {
+           admins.remove((Administrator) user);
+       }
+       else if (userID.startsWith("D")) {
+           doctors.remove((Doctor) user);
+       }
+       else if (userID.startsWith("S")) {
+           secs.remove((Secretary) user);
+       }
+       else if (userID.startsWith("P")){
+           patients.remove((Patient) user);
+       }
+    }
+    
     public static int GetNumberOfAdmins(){
         return admins.size();
     }
@@ -225,4 +244,5 @@ public class Database {
         return secs.size();
     }
    
+    
 }

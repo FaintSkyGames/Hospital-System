@@ -5,6 +5,8 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Geri
@@ -254,4 +256,23 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JPanel pData;
     private javax.swing.JPanel pOptions;
     // End of variables declaration//GEN-END:variables
+
+    public void AddNewAccountApproveListener(ActionListener listener){
+        btnApproveNew.addActionListener(listener);
+    }
+    public void AddRemoveApproveListener(ActionListener listener){
+        btnApproveRemove.addActionListener(listener);
+    }
+    public void AddAppointmentRequestListener(ActionListener listener){
+        btnApointRequest.addActionListener(listener);
+    }
+    public void AddGiveMedListener(ActionListener listener){
+        btnGiveMed.addActionListener(listener);
+    }
+    public void AddOrderMedStockListener(ActionListener listener){
+        btnReStock.addActionListener(listener);
+    }
+    public void AddRemovePatientsListener(ActionListener listener){
+        btnRemove.addActionListener(listener);
+    }
 }

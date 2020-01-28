@@ -5,6 +5,8 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Geri
@@ -213,4 +215,27 @@ public class DoctorPage extends javax.swing.JFrame {
     private javax.swing.JPanel pData;
     private javax.swing.JPanel pOptions;
     // End of variables declaration//GEN-END:variables
+
+
+    public void AddViewAppointmentsListener(ActionListener listener){
+        btnAppointments.addActionListener(listener);
+    }
+    public void AddNotesListener(ActionListener listener){
+        btnNotes.addActionListener(listener);
+    }
+    public void AddViewHistoryListener(ActionListener listener){
+        btnViewHistory.addActionListener(listener);
+    }
+    public void AddCreateAppointmentListener(ActionListener listener){
+        btnNewAppointment.addActionListener(listener);
+    }
+    public void AddPrescription(ActionListener listener){
+        btnPrescribeMed.addActionListener(listener);
+    }
+    public void AddCreateMedicineListener(ActionListener listener){
+        btnCreateMed.addActionListener(listener);
+    }
+    public void AddMedicationOrderListener(ActionListener listener){
+        btnRequestMed.addActionListener(listener); 
+    }
 }

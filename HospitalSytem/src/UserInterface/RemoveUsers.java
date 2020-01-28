@@ -5,12 +5,17 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author glfowles
  */
 public class RemoveUsers extends javax.swing.JFrame {
 
+    DefaultTableModel dm;
     /**
      * Creates new form RemoveUsers
      */
@@ -29,7 +34,6 @@ public class RemoveUsers extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tData = new javax.swing.JTable();
-        jScrollBar1 = new javax.swing.JScrollBar();
         btnBack = new javax.swing.JButton();
         lbTitle = new javax.swing.JLabel();
         pPatient = new javax.swing.JPanel();
@@ -50,13 +54,10 @@ public class RemoveUsers extends javax.swing.JFrame {
 
         tData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "First Name", "Surname", "User Type"
+
             }
         ));
         jScrollPane1.setViewportView(tData);
@@ -66,9 +67,9 @@ public class RemoveUsers extends javax.swing.JFrame {
         lbTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbTitle.setText("Delete Accounts");
 
-        lbName.setText("Patient Name");
+        lbName.setText("Name");
 
-        lbID.setText("Patient ID");
+        lbID.setText("ID");
 
         lbAge.setText("Age");
 
@@ -89,21 +90,21 @@ public class RemoveUsers extends javax.swing.JFrame {
                             .addComponent(lbID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
-                    .addGroup(pPatientLayout.createSequentialGroup()
-                        .addComponent(lbAddress)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAddress))
+                            .addComponent(txtID)
+                            .addComponent(txtName)))
                     .addGroup(pPatientLayout.createSequentialGroup()
                         .addComponent(lbAge)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addGap(26, 26, 26)
                         .addComponent(lbGender)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pPatientLayout.createSequentialGroup()
+                        .addComponent(lbAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pPatientLayout.setVerticalGroup(
@@ -114,20 +115,22 @@ public class RemoveUsers extends javax.swing.JFrame {
                     .addComponent(lbName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pPatientLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbID, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAge)
-                    .addComponent(lbGender)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAddress))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAddress)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbGender)
+                    .addComponent(lbAge))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         btnDelete.setText("Delete Account");
@@ -163,9 +166,7 @@ public class RemoveUsers extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pActions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -180,14 +181,12 @@ public class RemoveUsers extends javax.swing.JFrame {
                     .addComponent(lbTitle))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(pActions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -227,11 +226,61 @@ public class RemoveUsers extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void CreateColumns(){
+        dm = (DefaultTableModel) tData.getModel();
+        
+        dm.addColumn("ID");
+        dm.addColumn("Name");
+        dm.addColumn("User Type");
+    }
+    
+    public void Populate(String id, String name, String type){
+        String[] rowData = {id, name, type};
+        dm.addRow(rowData);
+    }
+    
+    public void ClearTable(){
+        DefaultTableModel model = (DefaultTableModel) tData.getModel();
+        model.setRowCount(0);
+    }
+    
+    public String GetSelectedID(){
+        int selectedRowIndex = tData.getSelectedRow() ;
+        
+        return tData.getValueAt(selectedRowIndex, 0).toString();
+    }
+    
+    public void SetTxtName(String name){
+        txtName.setText(name);
+    }
+    
+    public void SetTxtID(String id){
+        txtID.setText(id);
+    }
+    
+    public void SetTxtAddress(String address){
+        txtAddress.setText(address);
+    }
+    
+    public void SetTxtAge(String age){
+        txtAge.setText(age);
+    }
+    
+    public void SetTxtGender(String gender) {
+        txtGender.setText(gender);        
+    }
+    
+    public void RemoveSelectedRow(){
+        DefaultTableModel model = (DefaultTableModel) tData.getModel();
+        int selectedRowIndex = tData.getSelectedRow();
+        model.removeRow(selectedRowIndex);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JToggleButton btnDelete;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAddress;
     private javax.swing.JLabel lbAge;
@@ -248,4 +297,18 @@ public class RemoveUsers extends javax.swing.JFrame {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+
+    public void AddAdminReturnListener(ActionListener listener){
+        btnBack.addActionListener(listener);
+    }
+    
+    public void AddDeleteUserListener(ActionListener listener){
+        btnDelete.addActionListener(listener);
+    }
+    
+    public void AddShowUserDataListener(ListSelectionListener listener){
+        tData.getSelectionModel().addListSelectionListener(listener);
+        
+    }
+
 }
