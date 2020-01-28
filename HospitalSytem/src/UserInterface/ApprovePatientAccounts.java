@@ -5,12 +5,17 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author glfowles
  */
 public class ApprovePatientAccounts extends javax.swing.JFrame {
 
+    DefaultTableModel dm;
     /**
      * Creates new form ApprovePatientAccounts
      */
@@ -37,7 +42,9 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
         txtGender = new javax.swing.JTextField();
         lbAddress = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
+        txtSurname = new javax.swing.JTextField();
+        lbName1 = new javax.swing.JLabel();
+        txtFirstName = new javax.swing.JTextField();
         pActions = new javax.swing.JPanel();
         lbType = new javax.swing.JLabel();
         txtRequest = new javax.swing.JTextField();
@@ -51,7 +58,7 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbName.setText("Patient Name");
+        lbName.setText("Surname");
 
         lbID.setText("Patient ID");
 
@@ -60,6 +67,8 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
         lbGender.setText("Gender");
 
         lbAddress.setText("Address");
+
+        lbName1.setText("First name");
 
         javax.swing.GroupLayout pPatientLayout = new javax.swing.GroupLayout(pPatient);
         pPatient.setLayout(pPatientLayout);
@@ -74,8 +83,8 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
                             .addComponent(lbID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(txtSurname, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))
                     .addGroup(pPatientLayout.createSequentialGroup()
                         .addComponent(lbAddress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -88,16 +97,23 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
                         .addComponent(lbGender)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPatientLayout.createSequentialGroup()
+                        .addComponent(lbName1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pPatientLayout.setVerticalGroup(
             pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pPatientLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbName1)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbID)
@@ -112,7 +128,7 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
                 .addGroup(pPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAddress)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         lbType.setText("Request Type");
@@ -159,13 +175,10 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
 
         tData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "First Name", "Surname", "Request"
+
             }
         ));
         jScrollPane1.setViewportView(tData);
@@ -213,7 +226,7 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
                         .addComponent(pPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pActions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -257,6 +270,83 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void CreateColumns(){
+        dm = (DefaultTableModel) tData.getModel();
+        
+        dm.addColumn("Name");
+        dm.addColumn("Request Type");
+    }
+    
+    public void Populate(String name, String type){
+        String[] rowData = {name, type};
+        dm.addRow(rowData);
+    }
+    
+    public void ClearTable(){
+        DefaultTableModel model = (DefaultTableModel) tData.getModel();
+        model.setRowCount(0);
+    }
+    
+    public String GetSelectedID(){
+        int selectedRowIndex = tData.getSelectedRow() ;
+        
+        return tData.getValueAt(selectedRowIndex, 0).toString();
+    }
+    
+    public String GetSelectedType(){
+        int selectedRowIndex = tData.getSelectedRow() ;
+        
+        return tData.getValueAt(selectedRowIndex, 1).toString();
+    }
+    
+    public String GetFirstName(){
+        return txtFirstName.getText();
+    }
+    
+    public String GetSurname(){
+        return txtSurname.getText();
+    }
+    
+    public String GetAddress(){
+        return txtAddress.getText();
+    }
+    
+    public String GetPassword(){
+        return "password";        // Temp holder, need to change
+    }
+    public String GetGender(){
+        return txtGender.getText();
+    }
+    public String GetAge(){
+        return txtAge.getText();
+    }
+    
+    public void SetTxtName(String name){
+        txtSurname.setText(name);
+    }
+    
+    public void SetTxtID(String id){
+        txtID.setText(id);
+    }
+    
+    public void SetTxtAddress(String address){
+        txtAddress.setText(address);
+    }
+    
+    public void SetTxtAge(String age){
+        txtAge.setText(age);
+    }
+    
+    public void SetTxtGender(String gender) {
+        txtGender.setText(gender);        
+    }
+    
+    public void RemoveSelectedRow(){
+        DefaultTableModel model = (DefaultTableModel) tData.getModel();
+        int selectedRowIndex = tData.getSelectedRow();
+        model.removeRow(selectedRowIndex);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnApprove;
@@ -269,6 +359,7 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
     private javax.swing.JLabel lbGender;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbName;
+    private javax.swing.JLabel lbName1;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JLabel lbType;
     private javax.swing.JPanel pActions;
@@ -276,9 +367,27 @@ public class ApprovePatientAccounts extends javax.swing.JFrame {
     private javax.swing.JTable tData;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtRequest;
+    private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
+
+    public void AddReturnListener(ActionListener listener){
+        btnBack.addActionListener(listener);
+    }
+    
+    public void AddApproveUserListener(ActionListener listener){
+        btnApprove.addActionListener(listener);
+    }
+    
+    public void AddDeclineUserListener(ActionListener listener){
+        btnDecline.addActionListener(listener);
+    }
+    
+    public void AddShowUserDataListener(ListSelectionListener listener){
+        tData.getSelectionModel().addListSelectionListener(listener);   
+    }
+
 }

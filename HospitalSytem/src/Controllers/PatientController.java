@@ -9,6 +9,11 @@ import System.Database;
 import UserData.Doctor;
 import UserInterface.PatientPage;
 import UserData.Patient;
+import UserInterface.AppointmentRequest;
+import UserInterface.History;
+import UserInterface.LeaveFeedback;
+import UserInterface.Prescription;
+import UserInterface.TerminationRequest;
 import UserInterface.ViewFeedback;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +25,12 @@ import java.util.ArrayList;
  */
 public class PatientController {
     private PatientPage homeView;
+    private LeaveFeedback rateDoctorView;
     private ViewFeedback feedbackView;
+    private AppointmentRequest appointmentRequestView;
+    private History historyView;
+    private Prescription prescriptionView;
+    private TerminationRequest terminationRequestView;
     
     
     private Patient currentUser;
@@ -50,6 +60,7 @@ public class PatientController {
         homeView.AddViewHistoryListener(new HistoryListener());
         homeView.AddPrescription(new PrescriptionListener());
         homeView.AddTerminationRequestListener(new RequestTerminationListener());
+        homeView.AddLogOutListener(new LogOutListener());
     }
     
     class LeaveFeedbackListener implements ActionListener{
@@ -69,29 +80,36 @@ public class PatientController {
     class RequestAppointmentListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {            
-             //*
+             initialiseRequestAppointmentView();
         }
     }
     
     class HistoryListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {            
-             //*
+             initialiseHistoryView();
         }
     }
     
     class PrescriptionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {            
-             //*
+             initialisePrescriptionView();
         }
     }
     
     class RequestTerminationListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {            
-             //*
+             initialiseTerminationRequestView();
         }
+    }
+    
+    
+    public void initialiseRateDoctorView(){
+        rateDoctorView = new LeaveFeedback();
+        homeView.dispose();
+        rateDoctorView.setVisible(true);
     }
     
     
@@ -148,4 +166,39 @@ public class PatientController {
         }
     }
     
+    public void initialiseRequestAppointmentView(){
+        appointmentRequestView = new AppointmentRequest();
+        homeView.dispose();
+        appointmentRequestView.setVisible(true);
+    }
+    
+    public void initialiseHistoryView(){
+        historyView = new History();
+        homeView.dispose();
+        historyView.setVisible(true);
+    }
+    public void initialisePrescriptionView(){
+        prescriptionView = new Prescription();
+        homeView.dispose();
+        prescriptionView.setVisible(true);
+    }
+    public void initialiseTerminationRequestView(){
+        terminationRequestView = new TerminationRequest();
+        homeView.dispose();
+        terminationRequestView.setVisible(true);
+    }
+    
+    private void initialiseLogInPage(){
+        currentUser = null;
+        homeView.dispose();
+        AccessController accessController = new AccessController();
+        accessController.newView();
+    }
+    
+    class LogOutListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            initialiseLogInPage();
+        }
+    }
 }

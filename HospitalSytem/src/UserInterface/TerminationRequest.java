@@ -5,6 +5,8 @@
  */
 package UserInterface;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Geri
@@ -227,4 +229,8 @@ public class TerminationRequest extends javax.swing.JFrame {
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
+
+    public void addReturnListener(ActionListener listener){
+        btnBack.addActionListener(listener);
+    }
 }

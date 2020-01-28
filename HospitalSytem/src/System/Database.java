@@ -7,6 +7,7 @@ package System;
 
 //
 import System.Adapters.ReadJSON;
+import System.Factories.CreateUser;
 import UserData.*;
 import java.io.File;
 
@@ -26,6 +27,9 @@ public class Database {
     public static ArrayList<Doctor> doctors;
     public static ArrayList<Patient> patients;
     public static ArrayList<Secretary> secs;
+    public static ArrayList<User> notes; /////******
+    public static ArrayList<Patient> terminationRequests;
+    public static ArrayList<Patient> newAccountRequests;
     
     // Singleton
     private static Database instance = null;
@@ -47,6 +51,9 @@ public class Database {
         this.doctors = this.Load("doctors.json", "D");
         this.patients = this.Load("patients.json", "P");
         this.secs = this.Load("secretaries.json", "S");
+        this.terminationRequests = this.Load("terminationRequests.json", "P");
+        //this.newAccountRequests = this.Load("accountRequests.json", "P");
+        
     }
     
     
@@ -70,15 +77,14 @@ public class Database {
         else if (fileType == "P") {
             arrayList = CreatePatient(data);
         }
-        else if (fileType == "Med") {
-            
-        }
         //* load file array
         //* if user create users from data
         
         return arrayList;
     }
     
+    
+    //Put the data into arraylists
     private static ArrayList CreateAdmin(JSONArray adminData){
         ArrayList<Administrator> adminList = new ArrayList<>();
         
@@ -157,12 +163,22 @@ public class Database {
         return patientList;
     }
     
-    
+    private static ArrayList CreateNote(JSONArray noteData){
+        ArrayList<String> noteList = new ArrayList<>();
+        
+        for (int i = 0; i < noteData.size(); i++) {
+            JSONObject current = (JSONObject) noteData.get(i);
+            noteList.add(current.toJSONString());
+        }
+        return noteList;
+    }
     
     private ArrayList CreateMedicines(){
      return null;   
     }
     
+    
+    //Getters & setters
     public static User GetUser(String id){
         ArrayList<User> list = new ArrayList<User>();
         
@@ -175,6 +191,27 @@ public class Database {
             
             if (user.getID().equalsIgnoreCase(id)) {
                 return user;
+            }
+        } 
+        return null;
+    }
+    
+    public static User GetUser(String firstName, String surname, String address){
+        ArrayList<User> list = new ArrayList<User>();
+        
+        list.addAll(admins);
+        list.addAll(doctors);
+        list.addAll(secs);
+        list.addAll(patients);
+
+        for (User user : list) {
+            
+            if (user.getFirstName().equalsIgnoreCase(firstName)) {
+                if (user.getSurname().equalsIgnoreCase(surname)) {
+                    if (user.getAddress().equalsIgnoreCase(address)) {
+                        return user;
+                    }
+                }
             }
         } 
         return null;
@@ -196,7 +233,26 @@ public class Database {
         return secs;
     }
     
-    public static void AddUserToDatabase(User user){
+    public static int GetNumberOfAdmins(){
+        return admins.size();
+    }
+    
+    public static int GetNumberOfDoctors(){
+        return doctors.size();
+    }
+    
+    public static int GetNumberOfPatients(){
+        return patients.size();
+    }
+
+    public static int GetNumberOfSecretaries(){
+        return secs.size();
+    }
+   
+    
+    
+    //Making changes to the database
+    public static void AddUserToDatabase(User user){        
        if (user.getID().startsWith("A")) {
            admins.add((Administrator) user);
        }
@@ -228,21 +284,15 @@ public class Database {
        }
     }
     
-    public static int GetNumberOfAdmins(){
-        return admins.size();
+    public static void RemoveRequestFromDatabase(String userID, String type){
+        User user = GetUser(userID);
+        
+        if (type == "Terminate") {
+           terminationRequests.remove((Patient) user);
+       }
+       else if (type == "New Account") {
+           newAccountRequests.remove((Patient) user);
+       }
     }
-    
-    public static int GetNumberOfDoctors(){
-        return doctors.size();
-    }
-    
-    public static int GetNumberOfPatients(){
-        return patients.size();
-    }
-    
-    public static int GetNumberOfSecretaries(){
-        return secs.size();
-    }
-   
     
 }

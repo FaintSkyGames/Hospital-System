@@ -48,6 +48,7 @@ public class DoctorPage extends javax.swing.JFrame {
         btnPrescribeMed = new javax.swing.JButton();
         btnCreateMed = new javax.swing.JButton();
         btnRequestMed = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +135,8 @@ public class DoctorPage extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
+        btnLogOut.setText("Log Out");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,13 +150,18 @@ public class DoctorPage extends javax.swing.JFrame {
                         .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
-                        .addComponent(lbTitle)))
+                        .addComponent(lbTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLogOut)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addComponent(btnLogOut)
+                .addGap(5, 5, 5)
                 .addComponent(lbTitle)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,6 +211,7 @@ public class DoctorPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAppointments;
     private javax.swing.JButton btnCreateMed;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnNewAppointment;
     private javax.swing.JButton btnNotes;
     private javax.swing.JButton btnPrescribeMed;
@@ -237,5 +246,10 @@ public class DoctorPage extends javax.swing.JFrame {
     }
     public void AddMedicationOrderListener(ActionListener listener){
         btnRequestMed.addActionListener(listener); 
+    }
+
+
+    public void AddLogOutListener(ActionListener listener){
+        btnLogOut.addActionListener(listener);
     }
 }

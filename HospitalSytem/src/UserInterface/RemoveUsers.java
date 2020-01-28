@@ -298,7 +298,7 @@ public class RemoveUsers extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 
-    public void AddAdminReturnListener(ActionListener listener){
+    public void AddReturnListener(ActionListener listener){
         btnBack.addActionListener(listener);
     }
     
@@ -307,8 +307,7 @@ public class RemoveUsers extends javax.swing.JFrame {
     }
     
     public void AddShowUserDataListener(ListSelectionListener listener){
-        tData.getSelectionModel().addListSelectionListener(listener);
-        
+        tData.getSelectionModel().addListSelectionListener(listener);   
     }
 
 }

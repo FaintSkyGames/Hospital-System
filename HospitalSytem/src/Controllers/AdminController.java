@@ -59,6 +59,7 @@ public class AdminController {
         homeView.AddDoctorRatingListener(new DoctorRatingListener());
         homeView.AddNewUserListener(new NewUserListener());
         homeView.AddRemoveUserListener(new RemoveUserListener());
+        homeView.AddLogOutListener(new LogOutListener());
     }
     
     class DoctorRatingListener implements ActionListener{
@@ -220,12 +221,6 @@ public class AdminController {
                     sec.getFirstName() + " " + sec.getSurname(),
                     "Secretary");
         }
-        
-        for (Patient patient : Database.patients) {
-            removeUsers.Populate(patient.getID(), 
-                    patient.getFirstName() + " " + patient.getSurname(), 
-                    "Patient");
-        }        
     }
     
     private void ShowUserData(){
@@ -245,7 +240,7 @@ public class AdminController {
     }
     
     private void AddRemoveUserListeners(){
-        removeUsers.AddAdminReturnListener(new AdminReturnFromRemoveUserListener());
+        removeUsers.AddReturnListener(new AdminReturnFromRemoveUserListener());
         removeUsers.AddDeleteUserListener(new DeleteUserListener());
         removeUsers.AddShowUserDataListener(new ShowUserListener());
     }
@@ -269,6 +264,22 @@ public class AdminController {
         @Override
         public void valueChanged(ListSelectionEvent e){
             ShowUserData();
+        }
+    }
+    
+    
+    
+    private void initialiseLogInPage(){
+        currentUser = null;
+        homeView.dispose();
+        AccessController accessController = new AccessController();
+        accessController.newView();
+    }
+    
+    class LogOutListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            initialiseLogInPage();
         }
     }
     

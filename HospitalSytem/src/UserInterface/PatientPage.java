@@ -51,6 +51,7 @@ public class PatientPage extends javax.swing.JFrame {
         btnAppointment = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         btnPrescription = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,6 +144,8 @@ public class PatientPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnLogOut.setText("Log Out");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,13 +159,18 @@ public class PatientPage extends javax.swing.JFrame {
                         .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
-                        .addComponent(lbTitle)))
+                        .addComponent(lbTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLogOut)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addComponent(btnLogOut)
+                .addGap(5, 5, 5)
                 .addComponent(lbTitle)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -213,6 +221,7 @@ public class PatientPage extends javax.swing.JFrame {
     private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnFeedback;
     private javax.swing.JButton btnHistory;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnPrescription;
     private javax.swing.JButton btnRatings;
     private javax.swing.JButton btnTerminate;
@@ -247,4 +256,7 @@ public class PatientPage extends javax.swing.JFrame {
     }
 
 
+    public void AddLogOutListener(ActionListener listener){
+        btnLogOut.addActionListener(listener);
+    }
 }

@@ -75,7 +75,7 @@ public class AccessController {
         }
         else if (checkUser.getID().startsWith("S")) {
             view.dispose();
-            Main.secretaryController.initaliseSecretaryView((Secretary) checkUser);
+            Main.secretaryController.initialiseSecretaryView((Secretary) checkUser);
         }
         else{
             view.dispose();

@@ -47,6 +47,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         btnReStock = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         lbTitle = new javax.swing.JLabel();
+        btnLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,6 +157,8 @@ public class SecretaryPage extends javax.swing.JFrame {
         lbTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbTitle.setText("Secretary Page");
 
+        btnLogOut.setText("Log Out");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,13 +172,18 @@ public class SecretaryPage extends javax.swing.JFrame {
                         .addComponent(pOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
-                        .addComponent(lbTitle)))
+                        .addComponent(lbTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLogOut)))
                 .addContainerGap(488, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addComponent(btnLogOut)
+                .addGap(5, 5, 5)
                 .addComponent(lbTitle)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -247,6 +255,7 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JButton btnApproveNew;
     private javax.swing.JButton btnApproveRemove;
     private javax.swing.JButton btnGiveMed;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnReStock;
     private javax.swing.JButton btnRemove;
     private javax.swing.JLabel lbAddress;
@@ -274,5 +283,9 @@ public class SecretaryPage extends javax.swing.JFrame {
     }
     public void AddRemovePatientsListener(ActionListener listener){
         btnRemove.addActionListener(listener);
+    }
+
+    public void AddLogOutListener(ActionListener listener){
+        btnLogOut.addActionListener(listener);
     }
 }
